@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Edit User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Mukta', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .form-control, .custom-file-input {
+            border-radius: 5px;
+        }
+        .form-check-label {
+            font-weight: normal;
+        }
+        .btn-primary {
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .header h4 {
+            margin: 0;
+        }
+        .nav-link {
+            margin-left: 20px;
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h4>User ID #{{ user.id }}</h4>
+            <nav>
+                <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+                <a href="{{ url_for('admin') }}" class="nav-link">Admin Panel</a>
+            </nav>
+        </div>
+
+        <form method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <div class="form-group text-center">
+                {% if user.profile_image_url %}
+                    <img src="{{ url_for('static', filename='res/profile_image/' + user.profile_image_url) }}" alt="Profile Image" class="profile-img">
+                    <br>
+                {% else %}
+                    <p>No profile image available.</p>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                {{ form.name(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="designation">Designation:</label>
+                {{ form.designation(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="about">About:</label>
+                {{ form.about(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone:</label>
+                {{ form.phone(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                {{ form.email(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="website">Website:</label>
+                {{ form.website(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                {{ form.location(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="facebook">Facebook:</label>
+                {{ form.facebook(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="instagram">Instagram:</label>
+                {{ form.instagram(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="linkedin">LinkedIn:</label>
+                {{ form.linkedin(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="twitter">Twitter:</label>
+                {{ form.twitter(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="profile_image_url">Profile Image:</label>
+                <div class="custom-file">
+                    {{ form.profile_image_url(class_='custom-file-input') }}
+                    <label class="custom-file-label" for="profile_image_url">Choose file</label>
+                </div>
+            </div>
+            <div class="form-group form-check">
+                {{ form.show_services(class_='form-check-input') }}
+                <label class="form-check-label" for="show_services">Show Services</label>
+            </div>
+            <div class="form-group">
+                <label for="service1_title">Service 1 Title:</label>
+                {{ form.service1_title(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="service1_description">Service 1 Description:</label>
+                {{ form.service1_description(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="service2_title">Service 2 Title:</label>
+                {{ form.service2_title(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="service2_description">Service 2 Description:</label>
+                {{ form.service2_description(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="service3_title">Service 3 Title:</label>
+                {{ form.service3_title(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="service3_description">Service 3 Description:</label>
+                {{ form.service3_description(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="service4_title">Service 4 Title:</label>
+                {{ form.service4_title(class_='form-control') }}
+            </div>
+            <div class="form-group">
+                <label for="service4_description">Service 4 Description:</label>
+                {{ form.service4_description(class_='form-control') }}
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Add the following code if you want the name of the file to appear on select
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
+    </script>
+</body>
+</html>

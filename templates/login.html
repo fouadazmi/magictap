@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Login | Magic Tap</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #6e8efb, #a777e3);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .login-container {
+            display: flex;
+            max-width: 900px;
+            width: 100%;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .welcome-section {
+            background: linear-gradient(120deg, #6e8efb, #a777e3);
+            padding: 50px;
+            color: #fff;
+            text-align: center;
+            flex: 1;
+        }
+        .form-section {
+            padding: 50px;
+            flex: 1;
+        }
+        .form-section h1 {
+            margin-bottom: 30px;
+        }
+        .form-control {
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 15px;
+        }
+        .btn-primary {
+            background: linear-gradient(120deg, #6e8efb, #a777e3);
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+        }
+        .btn-primary:hover {
+            background: linear-gradient(120deg, #5a73d9, #9055c1);
+        }
+        .form-check-label, .forgot-password {
+            display: inline-block;
+        }
+        .forgot-password {
+            float: right;
+        }
+        .create-account {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="welcome-section">
+            <h2>Welcome Page</h2>
+            
+            <p>www.magictap.com</p>
+        </div>
+        <div class="form-section">
+            <h1>Login</h1>
+            <form method="POST" action="{{ url_for('login') }}">
+                <input type="text" id="username" name="username" class="form-control" placeholder="Username" required>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="remember">
+                    <label class="form-check-label" for="remember">Remember</label>
+                    <a href="#" class="forgot-password">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                <div class="create-account">
+                    <a href="#">Create Account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Editor Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 900px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .login-form {
+            padding: 20px;
+            flex: 1;
+            text-align: center;
+        }
+
+        .login-form h1 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .login-form p {
+            margin-bottom: 15px;
+        }
+
+        .login-form label {
+            font-size: 14px;
+            color: #666;
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .login-form button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            background-color: #5a67d8;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .login-form button:hover {
+            background-color: #434190;
+            transform: translateY(-2px);
+        }
+
+        .image-section {
+            flex: 1;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .image-section img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+
+            .login-form {
+                padding: 40px;
+            }
+
+            .image-section {
+                padding: 40px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .container {
+                margin: 10px;
+            }
+
+            .login-form {
+                padding: 20px;
+                order: 2;
+            }
+
+            .image-section {
+                padding: 20px;
+                order: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="image-section">
+            {% if user.profile_image_url %}
+                <img src="{{ url_for('static', filename='res/profile_image/' + user.profile_image_url) }}" alt="Profile Image" class="profile-img">
+            {% else %}
+                <img src="https://via.placeholder.com/300" alt="Default Profile Image" class="profile-img">
+            {% endif %}
+        </div>
+        <div class="login-form">
+            <h1>Editor Login</h1>
+            <form method="POST" action="{{ url_for('editor_login', user_uuid=user_uuid) }}">
+                {{ form.hidden_tag() }}
+                <p>
+                    {{ form.username.label }}<br>
+                    {{ form.username(size=32) }}
+                </p>
+                <p>
+                    {{ form.password.label }}<br>
+                    {{ form.password(size=32) }}
+                </p>
+                <p>
+                    <button type="submit">Login Now</button>
+                </p>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

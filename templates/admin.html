@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        header h1 {
+            margin: 0;
+            color: #333;
+        }
+        nav a {
+            margin-left: 20px;
+            color: #6a11cb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f8f9fa;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        td {
+            color: #555;
+        }
+        tr:hover {
+            background-color: #f1f3f5;
+        }
+        .button {
+            color: #fff;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 25px;
+            display: inline-block;
+            transition: background 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .button:hover {
+            background: linear-gradient(to right, #2575fc, #6a11cb);
+        }
+        .credentials p {
+            margin: 0;
+            padding: 2px 0;
+        }
+        .editor-credentials {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .editor-credentials p {
+            margin: 5px 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Welcome, {{ username }}</h1>
+            <nav>
+                <a href="{{ url_for('logout') }}">Logout</a>
+                <a href="{{ url_for('add_user') }}">Add User</a>
+            </nav>
+        </header>
+
+        <main>
+            <h2>User List</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Editor Credentials</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.id }}</td>
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.phone }}</td>
+                        <td class="editor-credentials">
+                            {% if user.editor_username and user.editor_password %}
+                                <p>Username: {{ user.editor_username }}</p>
+                                <p>Password: {{ user.editor_password }}</p>
+                            {% else %}
+                                <p>No credentials</p>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{{ url_for('user_detail', username=user.username) }}" class="button">View Details</a>
+                            <a href="{{ url_for('edit_user', user_uuid=user.uuid) }}" class="button">Edit</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </main>
+        <footer>
+            &copy; 2024 Admin Panel. All rights reserved.
+        </footer>
+    </div>
+</body>
+</html>

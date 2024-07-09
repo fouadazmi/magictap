@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block content %}
+<div class="scroll-container">
+    <!-- Contact Section -->
+    <div class="container">
+        <div class="container-card">
+            <div class="container-card-header">
+                <!-- Change profile photo from here -->
+                <div class="profile-photo">
+                    {% if user.profile_image_url %}
+                        <img src="{{ url_for('static', filename='res/profile_image/' + user.profile_image_url) }}" alt="Profile Image">
+                    {% else %}
+                        <img src="{{ url_for('static', filename='res/profile_image/default.png') }}" alt="Profile Image">
+                    {% endif %}
+                </div>
+                <div class="profile-details">
+                    <h1>{{ user.name }}</h1>
+                    <h2 class="designation">{{ user.designation }}</h2>
+                </div>
+            </div>
+            <div class="container-card-middle">
+                <div class="about">
+                    <h2>About</h2>
+                    <p>{{ user.about }}</p>
+                </div>
+                <div class="social">
+                    <div class="container-card-middle-right-icon">
+                        <a href="{{ user.facebook }}" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="{{ user.instagram }}" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="{{ user.linkedin }}" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                        <a href="{{ user.twitter }}" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="contact-details">
+                    <h2>Contact</h2>
+                    <p><i class="fas fa-phone"></i> {{ user.phone }}</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:{{ user.email }}">{{ user.email }}</a></p>
+                    <p><i class="fas fa-globe"></i> <a href="{{ user.website }}" target="_blank">{{ user.website }}</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> {{ user.location }}</p>
+                </div>
+            </div>
+            <div class="container-card-bottom">
+                <button><a href="{{ url_for('download_vcf', username=user.username) }}" class="button">Save Contact</a></button>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    {% if user.show_services %}
+    <div class="container">
+        <div class="container-card">
+            <div class="container-card-header">
+                <div class="profile-details">
+                    <h1>Our Services</h1>
+                </div>
+            </div>
+            <div class="container-card-middle">
+                <div class="services">
+                    <div class="service-cards">
+                        <div class="service-card">
+                            <i class="fas fa-search"></i>
+                            <h3>{{ user.service1_title }}</h3>
+                            <p>{{ user.service1_description }}</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-tools"></i>
+                            <h3>{{ user.service2_title }}</h3>
+                            <p>{{ user.service2_description }}</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-cut"></i>
+                            <h3>{{ user.service3_title }}</h3>
+                            <p>{{ user.service3_description }}</p>
+                        </div>
+                        <div class="service-card">
+                            <i class="fas fa-drafting-compass"></i>
+                            <h3>{{ user.service4_title }}</h3>
+                            <p>{{ user.service4_description }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-card-bottom">
+                
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

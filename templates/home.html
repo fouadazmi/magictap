@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Home | Magic Tap</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #5a67d8;
+        }
+        .container {
+            text-align: center;
+            max-width: 1200px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .hero img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 3.5em;
+            color: #343a40;
+        }
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+        .btn-primary {
+            background-color: #fff;
+            color: #5a67d8;
+            border: none;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #434190;
+            color: #fff;
+        }
+        .footer {
+            margin-top: 40px;
+            padding: 10px 0;
+            color: #343a40;
+        }
+        .services, .testimonials, .contact {
+            margin: 40px 0;
+        }
+        .service-item, .testimonial-item {
+            margin-bottom: 20px;
+        }
+        .service-item img, .testimonial-item img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .testimonial-item {
+            display: flex;
+            align-items: center;
+        }
+        .testimonial-item img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+        @media (min-width: 768px) {
+            .hero {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+            .hero h1 {
+                font-size: 4em;
+            }
+            .hero p {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <div>
+                <h1>Welcome to Magic Tap</h1>
+                <p>Your one-stop destination for all your NFC solutions.</p>
+                <a href="{{ url_for('login') }}" class="btn btn-primary">Admin</a>
+            </div>
+            <img src="https://via.placeholder.com/500x300" alt="Magic Tap Illustration">
+        </div>
+        <div class="services">
+            <h2>Our Services</h2>
+            <div class="row">
+                <div class="col-md-4 service-item">
+                    <img src="https://via.placeholder.com/300" alt="Service 1">
+                    <h3>Custom NFC Cards</h3>
+                    <p>Create personalized NFC cards for various applications including access control, event management, and more.</p>
+                </div>
+                <div class="col-md-4 service-item">
+                    <img src="https://via.placeholder.com/300" alt="Service 2">
+                    <h3>NFC Payment Solutions</h3>
+                    <p>Enable seamless and secure contactless payments for your business with our NFC payment systems.</p>
+                </div>
+                <div class="col-md-4 service-item">
+                    <img src="https://via.placeholder.com/300" alt="Service 3">
+                    <h3>Smart Marketing</h3>
+                    <p>Engage your customers with innovative NFC marketing solutions, including interactive posters and smart tags.</p>
+                </div>
+            </div>
+        </div>
+        <div class="testimonials">
+            <h2>What Our Clients Say</h2>
+            <div class="row">
+                <div class="col-md-6 testimonial-item">
+                    <img src="https://via.placeholder.com/50" alt="Client Photo">
+                    <p>"Magic Tap's NFC solutions transformed our event management process. Highly recommend!" - John Doe</p>
+                </div>
+                <div class="col-md-6 testimonial-item">
+                    <img src="https://via.placeholder.com/50" alt="Client Photo">
+                    <p>"The custom NFC cards are fantastic and have made access control so much easier." - Jane Smith</p>
+                </div>
+            </div>
+        </div>
+        <div class="contact">
+            <h2>Contact Us</h2>
+            <p>Have questions or need more information? Reach out to us at <a href="mailto:info@magictap.com">info@magictap.com</a></p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 Magic Tap, Inc. All rights reserved.</p>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.6.1/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
